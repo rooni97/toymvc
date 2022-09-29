@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,16 +76,22 @@
   <body class="text-center">
     
 <main class="form-signin w-100 m-auto">
-  <form>
+  <form th:action th:object="${memberInfo}" method="post">
+
+    <div th:if="${#fields.hasGlobalErrors()}">
+      <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+         th:text="${err}">전체 오류 메시지</p>
+    </div>
+
     <img class="mb-4" src="https://img.icons8.com/material/24/000000/music--v1.png" alt="" width="57" height="57"/>
     <h1 class="h3 mb-3 fw-normal">로그인이 필요합니다.</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input type="text" class="form-control" id="floatingInput" th:field="*{username}" placeholder="아이디를 입력해주세요.">
+      <label for="floatingInput">Id</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" th:field="*{password}" placeholder="비밀번호를 입력해주세요.">
       <label for="floatingPassword">Password</label>
     </div>
 

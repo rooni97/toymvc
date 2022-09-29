@@ -24,4 +24,9 @@ public class MemberService {
         return memberRepository.findById(id)
                 .orElse(null);
     }
+
+    public Member findByUsernameAndPassword(String username, String password) {
+        return memberRepository.findByUsernameAndPassword(username, password)
+                .orElse(null);
+    }
 }

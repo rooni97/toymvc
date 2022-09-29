@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import toy.toymvc.domain.Member;
 import toy.toymvc.domain.Music;
+import toy.toymvc.repository.MemberRepository;
 import toy.toymvc.repository.MusicRepository;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class MusicService {
 
     private final MusicRepository musicRepository;
+    private final MemberRepository memberRepository;
 
     public Long save(Music music) {
         musicRepository.save(music);
@@ -28,7 +30,9 @@ public class MusicService {
                 .orElse(null);
     }
 
-    public List<Music> findAll() {
-        return musicRepository.findAll();
+    public List<Music> findAllByMember(Long memberId) {
+        Member member = memberRepository.findById(memberId)
+                .orElse(null);
+        return musicRepository.findByMember(member);
     }
 }

@@ -87,7 +87,8 @@
                 <a class="nav-link fw-bold py-1 px-0" href="/">Home</a>
                 <a class="nav-link fw-bold py-1 px-0" href="/musics/add">Add-Music</a>
                 <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/musics">My-Music</a>
-                <a class="nav-link fw-bold py-1 px-0" href="/loginForm">Login</a>
+                <a class="nav-link fw-bold py-1 px-0" href="/login" th:unless="${isLogin}">Login</a>
+                <a class="nav-link fw-bold py-1 px-0" href="/logout" th:if="${isLogin}">Logout</a>
             </nav>
         </div>
     </header>
@@ -110,7 +111,7 @@
                     <td th:text="${music.playName}"></td>
                     <td th:text="${music.artistName}"></td>
                     <td>
-                        <a href="#" th:href="${music.url}">바로가기</a></td>
+                        <a href="#" th:href="${music.url}" target='_blank'>바로가기</a></td>
                     <td>
                         <a href="#" th:href="@{/musics/{id}/edit (id=${music.id})}"
                            class="btn btn-primary" role="button">수정</a>
