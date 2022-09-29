@@ -88,7 +88,8 @@
                 <a class="nav-link fw-bold py-1 px-0" href="/">Home</a>
                 <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/musics/add">Add-Music</a>
                 <a class="nav-link fw-bold py-1 px-0" href="/musics">My-Music</a>
-                <a class="nav-link fw-bold py-1 px-0" href="/loginForm">Login</a>
+                <a class="nav-link fw-bold py-1 px-0" href="/login" th:unless="${isLogin}">Login</a>
+                <a class="nav-link fw-bold py-1 px-0" href="/logout" th:if="${isLogin}">Logout</a>
             </nav>
         </div>
     </header>

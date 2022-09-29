@@ -87,7 +87,8 @@
         <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
         <a class="nav-link fw-bold py-1 px-0" href="/musics/add">Add-Music</a>
         <a class="nav-link fw-bold py-1 px-0" href="/musics">My-Music</a>
-        <a class="nav-link fw-bold py-1 px-0" href="/loginForm">Login</a>
+        <a class="nav-link fw-bold py-1 px-0" href="/login" th:unless="${isLogin}">Login</a>
+        <a class="nav-link fw-bold py-1 px-0" href="/logout" th:if="${isLogin}">Logout</a>
       </nav>
     </div>
   </header>
@@ -98,10 +99,11 @@
       <img width="30%" src="/img/bttb.png"/>
       <img width="30%" src="/img/ptp.png"/>
     </div>
+    <h1 th:if="${isLogin}" th:text="|안녕하세요. ${member.username}님|">안녕하세요.</h1>
     <h1>내가 좋아하는 음악을 추가 해보세요.</h1>
     <p class="lead">내가 소장하고 싶은 음악의 유튜브 url 혹은 플레이리스트의 url을 담아주세요.</p>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">음악 추가하기</a>
+      <a href="/musics/add" class="btn btn-lg btn-secondary fw-bold border-white bg-white">음악 추가하기</a>
     </p>
   </main>
 
